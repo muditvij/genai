@@ -2872,7 +2872,8 @@ async function handleMoodPick(mainMood, subMood) {
         await setDoc(doc(db, userPath), { lastCheckIn: id }, { merge: true });
 
         // Update theme
-applyMoodTheme(mainMood);
+        applyMoodTheme(baseMood.label);
+
         // Re-render the whole app content to show new state
         await refreshMoodData(user.uid);
         renderAppContent(false);
@@ -4630,7 +4631,8 @@ function main() {
             } catch (e) { console.error("Error fetching day rating:", e); }
 
             startReminderChecks();
-applyMoodTheme(todayMood?.mainMood || todayMood?.label || "Neutral");            renderAppContent(false);
+            applyMoodTheme(todayMood?.label || "Neutral");
+            renderAppContent(false);
             drawInteractiveChart(chartData);
             updateMusicCategoryFromMood();
 

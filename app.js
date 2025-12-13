@@ -4998,3 +4998,8 @@ main();
 
 // Call smart popups *after* main() has run and data (like todayDayRating) is fetched
 // We'll call this at the end of onAuthStateChanged instead
+
+
+
+
+

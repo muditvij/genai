@@ -184,73 +184,87 @@
     line-height: 1;
     transition: color 0.5s ease;
 }
-/* ===== Dynamic Mood Backgrounds (Fixed for 6 Moods) ===== */
+/* ===== Dynamic Mood Backgrounds ===== */
+@keyframes happy-gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-/* ===== Dynamic Mood Backgrounds (Scientific 6-Color Scale) ===== */
-
-/* Smooth Panning Animation */
-/* ===== Dynamic Mood Backgrounds (Unified Dark & Rich) ===== */
-
-/* Deep Breathing Animation */
-@keyframes mood-gradient-pan {
+@keyframes sad-gradient-animation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
 .theme-bg {
-    /* Large size for smooth moving effect */
-    background-size: 300% 300%;
-    transition: background-image 1.5s ease-in-out, background-color 1.5s ease-in-out;
-    
-    /* Default Base (Neutral Deep Space) */
-    background-color: #020617; 
-    background-image: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #0f172a 100%);
-    
-    /* Apply animation to ALL moods */
-    animation: mood-gradient-pan 15s ease infinite;
+    background-size: 200% 200%;
+    transition: background 1.5s ease-in-out;
 }
 
-/* 0. Neutral - Deep Space Grey/Blue */
-/* Applies to BOTH Light and Dark modes for consistent "Darky" look */
+/* Default (Neutral) */
+/* Default (Neutral) - Deep Grey/Black */
+/* Default (Neutral) - Deep Space Blue/Black */
+/* Default (Neutral) - Deep Space Blue/Black */
+.theme-bg,
 .theme-bg[data-mood-theme="neutral"] {
-    background-image: linear-gradient(135deg, #020617 0%, #1e293b 50%, #0f172a 100%);
+    background-color: #000000;
+    background-image: linear-gradient(135deg, #000000 0%, #111827 50%, #1e1b4b 100%);
+    animation: sad-gradient-animation 30s ease infinite;
+}
+.dark .theme-bg,
+.dark .theme-bg[data-mood-theme="neutral"] {
+    background-color: #000000;
+    background-image: linear-gradient(135deg, #000000 0%, #111827 50%, #1e1b4b 100%);
+    animation: sad-gradient-animation 30s ease infinite;
 }
 
-/* 1. Happy - DEEP BURNT ORANGE (User Requested) */
+/* Happy - Black + Rich Pink */
 .theme-bg[data-mood-theme="happy"] {
-    /* Deep Brown-Red -> Vibrant Burnt Orange -> Deep Red-Orange */
-    background-image: linear-gradient(135deg, #431407 0%, #c2410c 50%, #9a3412 100%);
+    background-color: #000000;
+    background-image: linear-gradient(120deg, #000000 0%, #1f2937 30%, #9d174d 70%, #ec4899 100%);
+    animation: happy-gradient-animation 18s ease infinite;
+}
+.dark .theme-bg[data-mood-theme="happy"] {
+    background-color: #000000;
+    background-image: linear-gradient(120deg, #000000 0%, #1f2937 30%, #9d174d 70%, #ec4899 100%);
+    animation: happy-gradient-animation 18s ease infinite;
 }
 
-/* 2. Surprise - DEEP GOLD/BRONZE (Yellow request, adapted for "Darky" theme) */
-.theme-bg[data-mood-theme="surprise"] {
-    /* Deep Brown -> Golden Bronze -> Dark Amber */
-    background-image: linear-gradient(135deg, #422006 0%, #a16207 50%, #854d0e 100%);
+/* Very Happy - Deep Purple & Magenta (Less Bright) */
+.theme-bg[data-mood-theme="very-happy"] {
+    background-color: #3b0764;
+    background-image: linear-gradient(120deg, #4c1d95 0%, #701a75 30%, #9d174d 60%, #be185d 100%);
+    animation: happy-gradient-animation 15s ease infinite;
+}
+.dark .theme-bg[data-mood-theme="very-happy"] {
+    background-color: #3b0764;
+    background-image: linear-gradient(120deg, #4c1d95 0%, #701a75 30%, #9d174d 60%, #be185d 100%);
+    animation: happy-gradient-animation 15s ease infinite;
 }
 
-/* 3. Anger - TOXIC GREEN (User Requested) */
-.theme-bg[data-mood-theme="anger"] {
-    /* Deep Jungle Green -> Toxic Green -> Forest Green */
-    background-image: linear-gradient(135deg, #022c22 0%, #15803d 50%, #064e3b 100%);
-}
-
-/* 4. Sad - MIDNIGHT BLUE */
+/* Sad - Deep Cool Blue (Perfect) */
 .theme-bg[data-mood-theme="sad"] {
-    /* Deep Navy -> Royal Blue -> Void Blue */
-    background-image: linear-gradient(135deg, #020617 0%, #172554 50%, #1e3a8a 100%);
+    background-color: #1e3a8a; /* blue-900 */
+    background-image: linear-gradient(135deg, #111827 0%, #1e3a8a 50%, #1e40af 100%);
+    animation: sad-gradient-animation 25s ease infinite;
+}
+.dark .theme-bg[data-mood-theme="sad"] {
+    background-color: #1e3a8a; /* blue-900 */
+    background-image: linear-gradient(135deg, #111827 0%, #1e3a8a 50%, #1e40af 100%);
+    animation: sad-gradient-animation 25s ease infinite;
 }
 
-/* 5. Fear - DEEP VOID PURPLE */
-.theme-bg[data-mood-theme="fear"] {
-    /* Black-Purple -> Deep Violet -> Indigo */
-    background-image: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #312e81 100%);
+/* Very Sad - Black + Dark Teal */
+.theme-bg[data-mood-theme="very-sad"] {
+    background-color: #000000;
+    background-image: linear-gradient(135deg, #000000 0%, #111827 40%, #134e4a 100%);
+    animation: sad-gradient-animation 30s ease infinite;
 }
-
-/* 6. Disgust - BLOOD RED */
-.theme-bg[data-mood-theme="disgust"] {
-    /* Black-Red -> Deep Crimson -> Dark Maroon */
-    background-image: linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #991b1b 100%);
+.dark .theme-bg[data-mood-theme="very-sad"] {
+    background-color: #000000;
+    background-image: linear-gradient(135deg, #000000 0%, #111827 40%, #134e4a 100%);
+    animation: sad-gradient-animation 30s ease infinite;
 }
 /* ==/* ===== Feeling Wheel ===== */
 /* ===== Mood Grid ===== */
@@ -799,6 +813,5 @@
     stroke: #111827;
 }
 /* ===== Dark Mode Chart Fixes ===== */
-
 
 
